@@ -1,12 +1,14 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: budget-tracker-react-service
-  namespace: argocd
+  name: budget-tracker-client
+  labels:
+    app: budget-tracker-client
 spec:
-  type: LoadBalancer
   selector:
-    app: budget-tracker-react
+    app: budget-tracker-client
+  type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 80
+  - name: http-budget-tracker
+    port: 80
+    targetPort: 80
