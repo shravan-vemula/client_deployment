@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       name: budget-tracker-react-pod
-      namespace: bootcamp3
+      namespace: argocd
       labels:
         app: budget-tracker-react
     spec:
