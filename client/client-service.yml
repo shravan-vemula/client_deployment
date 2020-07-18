@@ -1,14 +1,12 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: budget-tracker-client
-  labels:
-    app: budget-tracker-client
+  name: budget-tracker-react-service
+  namespace: bootcamp3
 spec:
-  selector:
-    app: budget-tracker-client
   type: LoadBalancer
+  selector:
+    app: budget-tracker-react
   ports:
-  - name: http-budget-tracker
-    port: 80
-    targetPort: 80
+    - port: 80
+      targetPort: 80
