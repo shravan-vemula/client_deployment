@@ -1,23 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: budget-tracker-client
+  name: budget-tracker-react-deployment
   labels:
-    app: budget-tracker-client
+    app: budget-tracker-react
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: budget-tracker-client
+      app: budget-tracker-react
   template:
     metadata:
+      name: budget-tracker-react-pod
+      namespace: bootcamp3
       labels:
-        app: budget-tracker-client
+        app: budget-tracker-react
     spec:
       containers:
-        - name: budget-tracker-client
+        - name: budget-tracker-react-container
           image: docker.pkg.github.com/zemoso-int/budget-tracker/client-service:sprint-release-3
           ports:
-            - containerPort: 80
+            - containerPort: 3000
+          resources: {}
       imagePullSecrets:
         - name: regcred
